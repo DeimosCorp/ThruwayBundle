@@ -53,7 +53,8 @@ class AnnotationConfigurationPass implements CompilerPassInterface
 
             if ($class->implementsInterface('Symfony\Component\DependencyInjection\ContainerAwareInterface')) {
                 $container->setDefinition($serviceId, $definition)
-                    ->addMethodCall('setContainer', [new Reference('thruway_container')]);
+                    //->addMethodCall('setContainer', [new Reference('thruway_container')]);
+                    ->addMethodCall('setContainer', [new Reference('service_container')]);
             } else {
                 $container->setDefinition($serviceId, $definition);
             }
